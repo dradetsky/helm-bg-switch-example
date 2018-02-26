@@ -1,14 +1,14 @@
 apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
-  name: green-deploy
+  name: {{ .Values.color }}-deploy
 spec:
   replicas: 3
   template:
     metadata:
       labels:
         name: nginx
-        color: green
+        color: {{ .Values.color }}
     spec:
       containers:
         - name: nginx

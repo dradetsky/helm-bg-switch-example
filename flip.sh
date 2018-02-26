@@ -1,19 +1,19 @@
 #!/bin/bash
 
-color_query=$(helm get values switch)
+current_color=$(./current-color.sh)
 
-if [[ $color_query == 'color: blue' ]] ; then
-    current_color=blue
+if [[ $current_color == 'blue' ]] ; then
     target_color=green
-elif [[ $color_query == 'color: green' ]] ; then
-    current_color=green
+elif [[ $current_color == 'green' ]] ; then
     target_color=blue
 else
     echo lolwut
-    echo $color_query
+    echo $current_color
     exit 1
 fi
 
 echo $current_color '->' $target_color
 
-helm upgrade --set color=$target_color switch switch
+kubectl apply -f kube/$target_color.yaml
+new_color=$(./current-color.sh)
+echo now $new_color

@@ -1,8 +1,7 @@
 #!/bin/bash
 
-for chart in blue green switch ; do
-    helm install -n $chart $chart
-done
+helm install -n switch switch
 
-# simplest way to make flip.sh work; initial deploy defaults to blue
-helm upgrade --set color=green switch switch
+for color in blue green ; do
+    helm install -n $color --set color=$color deploy
+done
