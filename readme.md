@@ -12,7 +12,7 @@ probably a shitty way to do it, but what the hell
    ```
 2. `./setup.sh`
 3. `addr=$(minikube service switch --url) ; curl $addr`
-4. `./upgrade.sh green 1`
+4. `./upgrade.sh blue 1`
 5. `./flip.sh`
-6. `./upgrade.sh blue 2`
+6. `./upgrade.sh green 2`
 6. `./flip.sh`
